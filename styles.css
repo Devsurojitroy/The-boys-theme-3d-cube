@@ -1,0 +1,96 @@
+/* Global styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #f00;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.cube-container {
+    perspective: 1200px;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 0.8s ease-out;
+}
+
+.face {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-color: #222;
+    border: 3px solid #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.front  { transform: rotateY(  0deg) translateZ(175px); background-image: url('images/front.jpg'); }
+.back   { transform: rotateY(180deg) translateZ(175px); background-image: url('images/back.jpg'); }
+.left   { transform: rotateY(-90deg) translateZ(175px); background-image: url('images/left.jpg'); }
+.right  { transform: rotateY( 90deg) translateZ(175px); background-image: url('images/right.jpg'); }
+.top    { transform: rotateX( 90deg) translateZ(175px); background-image: url('images/top.jpg'); }
+.bottom { transform: rotateX(-90deg) translateZ(175px); background-image: url('images/bottom.jpg'); }
+
+/* Adding hover effects for desktop */
+.cube:hover .face {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+}
+
+@media (hover: hover) {
+    .face:hover {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .cube-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .face {
+        width: 250px;
+        height: 250px;
+        transform: scale(0.9);
+    }
+}
